@@ -4,9 +4,28 @@
   nixpkgs.config.allowUnfree = true;
 
   programs.firefox.enable = false;
-  programs.steam.enable = true;
 
-  services.flatpak.enable = false;
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "com.valvesoftware.Steam"
+      "com.discordapp.Discord"
+      "com.brave.Browser"
+      "org.telegram.desktop"
+      "org.libretro.RetroArch"
+      "org.ppsspp.PPSSPP"
+      "net.pcsx2.PCSX2"
+      "net.rpcs3.RPCS3"
+      "net.shadps4.shadPS4"
+      "com.stremio.Stremio"
+      "org.gnome.Boxes"
+      "com.getpostman.Postman"
+      "io.dbeaver.DBeaverCommunity"
+      "io.github.benjamimgois.goverlay"
+      "org.kde.ktorrent"
+      "net.audiorelay.AudioRelay"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.zenpower
