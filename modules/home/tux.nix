@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     mangohud
     neovim
+    git
     vscode
     gh
     kdePackages.bluedevil
@@ -28,6 +29,4 @@
     dbeaver-bin
     goverlay
   ];
-
-  programs.git.enable = true;
 }
