@@ -14,5 +14,5 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager.users.tux = import ./home/tux.nix
+  home-manager.users.tux = import ./home/tux.nix;
 }
