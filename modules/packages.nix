@@ -5,15 +5,7 @@
 
   programs.firefox.enable = false;
 
-  services.flatpak = {
-    enable = true;
-
-    remotes = {
-      flathub = {
-        url = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      };
-    };
-  };
+  services.flatpak.enable = true;
 
   systemd.services.flatpak-apps = {
     wantedBy = [ "multi-user.target" ];
