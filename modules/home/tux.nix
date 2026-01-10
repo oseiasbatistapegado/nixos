@@ -8,8 +8,8 @@
   home.packages = with pkgs; [
     mangohud
     neovim
+    vscode
     gh
-    podman
     kdePackages.bluedevil
     kdePackages.bluez-qt
     kdePackages.plasma-workspace
@@ -24,7 +24,6 @@
     pcsx2
     rpcs3
     shadps4
-    stremio
     postman
     dbeaver-bin
     goverlay
