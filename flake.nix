@@ -12,12 +12,20 @@
 
   outputs = { nixpkgs, home-manager, ... }:
   {
-    nixosConfigurations.tuxbox = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.tux = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.tux = import ./modules/home/tux.nix;
+            backupFileExtension = "backup";
+          }
+        }
       ];
     };
   };
