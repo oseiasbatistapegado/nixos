@@ -3,6 +3,7 @@
 {
   home.username = "tux";
   home.homeDirectory = "/home/tux";
+  home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
     mangohud
