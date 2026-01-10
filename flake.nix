@@ -24,7 +24,7 @@
             useUserPackages = true;
             users.tux = import ./modules/home/tux.nix;
             backupFileExtension = "backup";
-          }
+          };
         }
       ];
     };
