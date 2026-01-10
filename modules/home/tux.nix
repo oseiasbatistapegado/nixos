@@ -13,6 +13,21 @@
     kdePackages.bluedevil
     kdePackages.bluez-qt
     kdePackages.plasma-workspace
+    kdePackages.ktorrent
+
+    steam
+    discord
+    brave
+    telegram-desktop
+    retroarch
+    ppsspp
+    pcsx2
+    rpcs3
+    shadps4
+    stremio
+    postman
+    dbeaver-bin
+    goverlay
   ];
 
   programs.git.enable = true;
