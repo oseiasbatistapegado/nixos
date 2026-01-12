@@ -25,8 +25,6 @@
     pcsx2
     rpcs3
     shadps4
-    postman
-    dbeaver-bin
     goverlay
   ];
 }
