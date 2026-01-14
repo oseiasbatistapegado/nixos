@@ -27,4 +27,20 @@
     shadps4
     goverlay
   ];
+
+  programs.plasma = {
+    enable = true;
+
+    workspace = {
+      theme = "BreezeDark";
+      iconTheme = "breeze-dark";
+    };
+
+    kwin = {
+      effects = {
+        blur.enable = true;
+        translucency.enable = true;
+      };
+    };
+  };
 }
