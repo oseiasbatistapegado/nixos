@@ -8,7 +8,6 @@
       ./modules/bluetooth.nix
       ./modules/boot.nix
       ./modules/cups.nix
-      ./modules/disks.nix
       ./modules/dm.nix
       ./modules/hostname.nix
       ./modules/keyboard.nix
