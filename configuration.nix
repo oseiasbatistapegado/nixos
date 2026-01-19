@@ -17,5 +17,6 @@
       ./modules/timezone.nix
       ./modules/users.nix
       ./modules/version.nix
+      ./modules/flake.nix
     ];
 }

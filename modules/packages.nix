@@ -3,17 +3,21 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  programs.fuse.userAllowOther = true;
   programs.firefox.enable = false;
   programs.steam.enable = true;
 
+  services.openssh.enable = false;
   services.flatpak.enable = false;
 
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.zenpower
-    neovim
     kdePackages.bluedevil
     kdePackages.bluez-qt
     kdePackages.plasma-workspace
     kdePackages.ktorrent
+    kdePackages.kdeconnect-kde
+    neovim
+    sshfs
   ];
 }
