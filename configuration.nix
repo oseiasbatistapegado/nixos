@@ -18,5 +18,6 @@
       ./modules/users.nix
       ./modules/version.nix
       ./modules/flake.nix
+      ./modules/ssh.nix
     ];
 }

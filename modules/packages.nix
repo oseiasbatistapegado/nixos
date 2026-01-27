@@ -17,6 +17,7 @@
     kdePackages.plasma-workspace
     kdePackages.ktorrent
     kdePackages.kdeconnect-kde
+    sunshine
     neovim
     sshfs
   ];
