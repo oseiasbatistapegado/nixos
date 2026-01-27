@@ -8,9 +8,9 @@
 
   programs.xwayland.enable = true;
 
-  services.displayManager.sddm = {
+  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager = {
     enable = true;
-    wayland.enable = true;
 
     autoLogin = {
       enable = true;

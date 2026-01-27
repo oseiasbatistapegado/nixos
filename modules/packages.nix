@@ -7,8 +7,7 @@
   programs.firefox.enable = false;
   programs.steam.enable = true;
 
-  services.openssh.enable = false;
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.zenpower
@@ -17,7 +16,6 @@
     kdePackages.plasma-workspace
     kdePackages.ktorrent
     kdePackages.kdeconnect-kde
-    sunshine
     neovim
     sshfs
   ];
