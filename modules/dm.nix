@@ -8,14 +8,9 @@
 
   programs.xwayland.enable = true;
 
-  services.displayManager.sddm.wayland.enable = true;
-  services.displayManager = {
+  services.displayManager.sddm = {
     enable = true;
-
-    autoLogin = {
-      enable = true;
-      user = "tux";
-    };
+    wayland.enable = true;
   };
 
   services.desktopManager.plasma6.enable = true;
