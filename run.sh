@@ -19,4 +19,9 @@ cp -r .nixos/modules .
 cp .nixos/configuration.nix .
 cp .nixos/flake.nix .
 
-nixos-install --flake '/mnt/etc/nixos#tux' --no-root-passwd
+if ! nixos-install --flake '/mnt/etc/nixos#tux' --no-root-passwd; then
+    echo "Primeira tentativa falhou, tentando novamente..."
+    nixos-install --flake '/mnt/etc/nixos#tux' --no-root-passwd
+fi
+
+nixos-enter --root /mnt -c 'passwd tux'
