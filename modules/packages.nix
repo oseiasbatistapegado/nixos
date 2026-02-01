@@ -18,5 +18,6 @@
     kdePackages.kdeconnect-kde
     neovim
     sshfs
+    lact
   ];
 }
