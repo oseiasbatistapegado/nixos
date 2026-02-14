@@ -14,6 +14,7 @@
     kdePackages.bluedevil
     kdePackages.bluez-qt
     kdePackages.plasma-workspace
+    kdePackages.kcalc
     kdePackages.ktorrent
     kdePackages.kdeconnect-kde
     neovim
