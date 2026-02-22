@@ -4,6 +4,17 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
+  # Portas TCP
+  networking.firewall.allowedTCPPorts = [ 
+    8080   # code-server
+    27036  # Steam Remote Play
+  ];
+
+  # Portas UDP
+  networking.firewall.allowedUDPPorts = [ 
+    27031 27036 # Steam Remote Play
+  ];
+
   # KDE Connect
   networking.firewall.allowedTCPPortRanges = [
     { from = 1714; to = 1764; }

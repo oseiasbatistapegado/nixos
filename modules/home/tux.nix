@@ -19,6 +19,7 @@
     pcsx2
     rpcs3
     shadps4
+    code-server
     goverlay
   ];
 }

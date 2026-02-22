@@ -5,7 +5,12 @@
 
   programs.fuse.userAllowOther = true;
   programs.firefox.enable = false;
-  programs.steam.enable = true;
+
+  programs.gamescope.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
 
   services.flatpak.enable = false;
 
@@ -17,6 +22,7 @@
     kdePackages.kcalc
     kdePackages.ktorrent
     kdePackages.kdeconnect-kde
+    gamescope
     neovim
     sshfs
     lact
