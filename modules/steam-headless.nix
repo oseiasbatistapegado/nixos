@@ -18,7 +18,6 @@
       ExecStart = ''
         ${pkgs.gamescope}/bin/gamescope \
           -W 1920 -H 1080 -r 60 -f 60 \
-          --headless \
           -- \
           ${pkgs.steam}/bin/steam -gamepadui -steamos
       '';
@@ -29,6 +28,7 @@
       "XDG_RUNTIME_DIR" = "/run/user/1000";
       "WLR_LIBINPUT_NO_DEVICES" = "1";
       "WLR_BACKENDS" = "headless";
+      "WLR_RENDERER" = "gles2";
       "SDL_VIDEODRIVER" = "wayland";
     };
   };
