@@ -11,7 +11,7 @@
   programs.xwayland.enable = true;
 
   services.displayManager.sddm = {
-    enable = true;
+    enable = false;
     wayland.enable = true;
   };
 
