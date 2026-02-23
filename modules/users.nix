@@ -6,6 +6,6 @@
     uid = 1000;
     group = "users";
     description = "tux";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "render" ];
   };
 }
