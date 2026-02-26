@@ -20,6 +20,6 @@
       ./modules/flake.nix
       ./modules/ssh.nix
       ./modules/systemd.nix
-      ./modules/steam-headless.nix
+      # ./modules/steam-headless.nix
     ];
 }

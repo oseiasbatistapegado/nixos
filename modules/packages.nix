@@ -16,12 +16,14 @@
 
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_zen.zenpower
-    kdePackages.bluedevil
-    kdePackages.bluez-qt
     kdePackages.plasma-workspace
-    kdePackages.kcalc
-    kdePackages.ktorrent
     kdePackages.kdeconnect-kde
+    # rocmPackages.rocminfo
+    kdePackages.bluedevil
+    # rocmPackages.rocm-smi
+    kdePackages.ktorrent
+    kdePackages.bluez-qt
+    kdePackages.kcalc
     gamescope
     neovim
     sshfs

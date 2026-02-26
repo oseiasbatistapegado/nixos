@@ -6,20 +6,21 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
-    mangohud
-    git
-    code-cursor
-    otpclient
-    gh
-    discord
-    brave
     telegram-desktop
+    # code-server
+    code-cursor
+    easyeffects
+    otpclient
     retroarch
+    mangohud
+    goverlay
+    discord
+    shadps4
     ppsspp
     pcsx2
     rpcs3
-    shadps4
-    code-server
-    goverlay
+    brave
+    git
+    gh
   ];
 }
