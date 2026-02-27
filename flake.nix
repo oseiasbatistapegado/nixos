@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -10,10 +11,17 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  let
+    system = "x86_64-linux";
+    unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in
   {
     nixosConfigurations.tux = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
 
       modules = [
         ./configuration.nix
@@ -22,6 +30,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            extraSpecialArgs = { inherit unstable; };
             users.tux = import ./modules/home/tux.nix;
             backupFileExtension = "backup";
           };

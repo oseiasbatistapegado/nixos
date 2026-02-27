@@ -24,8 +24,10 @@
     kdePackages.ktorrent
     kdePackages.bluez-qt
     kdePackages.kcalc
+    v4l-utils
     gamescope
     neovim
+    ffmpeg
     sshfs
     lact
   ];

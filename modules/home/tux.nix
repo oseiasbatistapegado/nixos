@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
   home.username = "tux";
@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     telegram-desktop
     # code-server
-    code-cursor
+    unstable.code-cursor
     easyeffects
     otpclient
     retroarch
