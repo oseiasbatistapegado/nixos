@@ -24,6 +24,10 @@
     { from = 1714; to = 1764; }
   ];
 
+  networking.hosts = {
+    "127.0.0.1" = [ "paradise-s1.battleye.com" "test-s1.battleye.com" "paradiseenhanced-s1.battleye.com" ];
+  };
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
