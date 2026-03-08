@@ -1,5 +1,1 @@
 *.lock
-
-# Hardware config gerado por host na instalação (nixos-generate-config --dir hosts/<host>)
-hosts/fenrir/hardware-configuration.nix
-hosts/huginn/hardware-configuration.nix

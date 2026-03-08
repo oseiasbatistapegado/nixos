@@ -11,7 +11,6 @@
     ../modules/common/locale.nix
     ../modules/common/network.nix
     ../modules/common/packages.nix
-    ../modules/common/ssh.nix
     ../modules/common/timezone.nix
     ../modules/common/users.nix
     ../modules/common/version.nix

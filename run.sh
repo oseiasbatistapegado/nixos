@@ -14,11 +14,11 @@ REPO_URL="${REPO_URL:-https://github.com/oseiasbatistapegado/nixos.git}"
 
 mount /dev/disk/by-label/nixos /mnt
 mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
-mount --mkdir /dev/disk/by-label/home /mnt/home
 swapon /dev/disk/by-label/swap
 
 case "$HOST" in
   FENRIR)
+    mount --mkdir /dev/disk/by-label/home /mnt/home
     mount --mkdir /dev/disk/by-label/games /mnt/media/games
     HOST_DIR="fenrir"
     ;;
@@ -31,6 +31,7 @@ case "$HOST" in
     ;;
 esac
 
+mkdir -p /mnt/etc/nixos
 cd /mnt/etc/nixos
 
 # Clone do repositório
