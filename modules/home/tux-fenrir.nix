@@ -7,7 +7,6 @@
 
   home.packages = with pkgs; [
     telegram-desktop
-    # code-server
     unstable.code-cursor
     easyeffects
     otpclient

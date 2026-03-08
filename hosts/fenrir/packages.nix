@@ -1,11 +1,7 @@
 { pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-
-  programs.fuse.userAllowOther = true;
   programs.firefox.enable = false;
-
   programs.gamescope.enable = true;
   programs.steam = {
     enable = true;
@@ -18,15 +14,14 @@
     linuxKernel.packages.linux_zen.zenpower
     kdePackages.plasma-workspace
     kdePackages.kdeconnect-kde
-    # rocmPackages.rocminfo
+    kdePackages.libkscreen
     kdePackages.bluedevil
-    # rocmPackages.rocm-smi
     kdePackages.ktorrent
     kdePackages.bluez-qt
     kdePackages.kcalc
     v4l-utils
     gamescope
-    neovim
+    sunshine
     ffmpeg
     sshfs
     lact

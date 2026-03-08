@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   hardware.graphics.enable32Bit = true;
@@ -10,9 +10,20 @@
 
   programs.xwayland.enable = true;
 
-  services.displayManager.sddm = {
+  services.displayManager = {
+    autoLogin = {
+      enable = true;
+      user = "tux";
+    };
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+  };
+
+  xdg.portal = {
     enable = true;
-    wayland.enable = true;
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
   };
 
   services.desktopManager.plasma6.enable = true;
