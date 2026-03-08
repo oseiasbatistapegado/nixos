@@ -1,10 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 
 {
   programs.firefox.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    firefox
-    moonlight-qt
-  ];
+  environment.systemPackages = with pkgs; [];
 }

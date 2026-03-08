@@ -12,23 +12,17 @@ HOST="${1:?Uso: $0 FENRIR|HUGINN}"
 # Ajuste a URL do repositório se necessário
 REPO_URL="${REPO_URL:-https://github.com/oseiasbatistapegado/nixos.git}"
 
+mount /dev/disk/by-label/nixos /mnt
+mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
+mount --mkdir /dev/disk/by-label/home /mnt/home
+swapon /dev/disk/by-label/swap
+
 case "$HOST" in
   FENRIR)
-    # 3 discos: 1 NVMe + 2 SSDs (labels: nixos, boot, home, games, swap)
-    mount /dev/disk/by-label/nixos /mnt
-    mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
-    mount --mkdir /dev/disk/by-label/home /mnt/home
     mount --mkdir /dev/disk/by-label/games /mnt/media/games
-    swapon /dev/disk/by-label/swap
     HOST_DIR="fenrir"
     ;;
   HUGINN)
-    # 1 disco (ex.: Samsung Chromebook 4). Ajuste labels conforme seu layout.
-    # Exemplo: partição root = nixos, ESP = boot; ou use by-uuid.
-    mount /dev/disk/by-label/nixos /mnt
-    mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
-    # swap opcional (descomente e ajuste o label se tiver partição swap)
-    # swapon /dev/disk/by-label/swap
     HOST_DIR="huginn"
     ;;
   *)

@@ -6,4 +6,6 @@
 
   # Sem impressora no huginn.
   services.printing.enable = false;
+
+  services.openssh.enable = false;
 }

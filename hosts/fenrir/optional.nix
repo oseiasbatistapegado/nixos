@@ -5,6 +5,8 @@
 
   services.printing.enable = false;
 
+  services.openssh.enable = true;
+
   # Sunshine + Moonlight / KDE Connect firewall
   networking.firewall.allowedTCPPorts = [
     47984

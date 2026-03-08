@@ -72,7 +72,11 @@
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home.packages = with pkgs; [
-    git
-    gh
+    unstable.code-cursor
+    moonlight-qt
+    easyeffects
+    otpclient
+    discord
+    firefox
   ];
 }

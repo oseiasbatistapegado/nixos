@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "tux";
@@ -6,20 +6,12 @@
   home.stateVersion = "25.11";
 
   home.packages = with pkgs; [
-    telegram-desktop
-    unstable.code-cursor
-    easyeffects
-    otpclient
     retroarch
     mangohud
     goverlay
-    discord
     shadps4
     ppsspp
     pcsx2
     rpcs3
-    brave
-    git
-    gh
   ];
 }
