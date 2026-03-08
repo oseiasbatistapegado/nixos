@@ -43,6 +43,8 @@ rm -rf .nixos-tmp
 # Gera hardware-configuration.nix no diretório do host
 nixos-generate-config --root /mnt --dir "/mnt/etc/nixos/hosts/$HOST_DIR"
 
+git add .
+
 if ! nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd; then
   echo "Primeira tentativa falhou, tentando novamente..."
   nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd
