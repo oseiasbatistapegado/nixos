@@ -14,10 +14,6 @@
   programs.xwayland.enable = true;
 
   services.displayManager = {
-    autoLogin = {
-      enable = true;
-      user = "tux";
-    };
     defaultSession = "hyprland";
     ly = {
       enable = true;
