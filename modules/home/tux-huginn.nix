@@ -100,6 +100,12 @@
       };
       decoration = {
         rounding = 10;
+	blur = {
+	  enabled = true;
+	  size = 3;
+	  passes = 1;
+	  new_optimizations = true;
+	};
 	shadow = {
 	  enabled = true;
 	  range = 4;
@@ -122,7 +128,11 @@
     enable = true;
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 11;
+      size = 14;
+    };
+    settings = {
+      background_opacity = "0.85";
+      confirm_os_window_close = 0;
     };
   };
 
