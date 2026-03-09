@@ -44,6 +44,34 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+
+        # Mudar o foco para o workspace (Mod + 1-0)
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
+
+        # Enviar janela ativa para o workspace (Mod + SHIFT + 1-0)
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
+        "$mod SHIFT, 9, movetoworkspace, 9"
+        "$mod SHIFT, 0, movetoworkspace, 10"
+
+        # Scroll através dos workspaces (Mod + Mouse Wheel)
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
       ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -55,7 +83,7 @@
       ];
       exec-once = [
         "dbus-update-activation-environment --systemd --all"
-	"waybar"
+	      "waybar"
       ];
       input = {
         kb_layout = "br";
@@ -111,7 +139,7 @@
 
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
 
     style = ''
       * {
@@ -123,10 +151,10 @@
         border-bottom: 2px solid rgba(100, 114, 125, 0.5);
         color: white;
       }
-      /* Adiciona espaçamento entre cada módulo individual */
       #workspaces button,
       #cpu,
       #memory,
+      #disk,
       #battery,
       #pulseaudio,
       #bluetooth,
@@ -134,29 +162,68 @@
         padding: 0 10px;
         margin: 0 4px;
       }
+      #workspaces button.active {
+        background-color: rgba(51, 204, 255, 0.66); 
+        border-radius: 5px;
+        color: #ffffff;
+      }
     '';
 
     settings = {
       mainBar = {
         layer = "top";
-	position = "top";
-	modules-left = [ "hyprland/workspaces" ];
-	modules-center = [ "hyprland/window" ];
-	modules-right = [ "pulseaudio" "bluetooth" "cpu" "memory" "battery" "clock" ];
+	      position = "top";
+	      modules-left = [ "hyprland/workspaces" ];
+	      modules-center = [ "hyprland/window" ];
+	      modules-right = [ "pulseaudio" "bluetooth" "cpu" "memory" "disk" "battery" "clock" ];
 
-	battery = {
-  	 format = "{capacity}% {icon}";
-	 format-icons = ["" "" "" "" ""];
-	};
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "";
+            "8" = "";
+            "9" = "";
+            "10" = "";
+          };
+          on-click = "activate";
+          persistent-workspaces = {
+            "DP-1" = [ 1 2 3 4 5 6 7 8 9 10 ];
+          };
+        };
 
-	pulseaudio = {
-	  format = "{volume}% {icon}";
-	  format-icons = { default = ["" "" ""]; };
-	  on-click = "pavucontrol";
+        cpu = {
+          format = "{usage}% ";
+        };
+
+        memory = {
+          format = "{percentage}% ";
+        };
+
+        disk = {
+          interval = 30;
+          format = "{percentage_used}% ";
+          path = "/";
+        };
+
+	      battery = {
+          format = "{capacity}% {icon}";
+          format-icons = ["" "" "" "" ""];
+	      };
+
+	      pulseaudio = {
+	        format = "{volume}% {icon}";
+          format-icons = { default = ["" "" ""]; };
+          on-click = "pavucontrol";
         };
 
         bluetooth = {
-          format = " {status}";
+          format = "{status} ";
           on-click = "blueman-manager";
         };
       };
