@@ -5,6 +5,22 @@
   home.homeDirectory = "/home/tux";
   home.stateVersion = "25.11";
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "adwaita-dark";
+  };
+
   # Usar Hyprland e portal do NixOS (package = null, portalPackage = null)
   wayland.windowManager.hyprland = {
     enable = true;
@@ -15,7 +31,8 @@
     settings = {
       "$mod" = "SUPER";
       bind = [
-        "$mod, F, exec, firefox"
+        "$mod, R, exec, wofi --show drun"
+        "$mod, F, fullscreen"
         "$mod, Return, exec, kitty"
         "$mod, Q, killactive"
         "$mod, M, exit"
@@ -32,8 +49,13 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
+      monitor = [
+        "eDP-1,disable"
+        "DP-1,preferred,auto,1"
+      ];
       exec-once = [
         "dbus-update-activation-environment --systemd --all"
+	"waybar"
       ];
       input = {
         kb_layout = "br";
@@ -50,10 +72,12 @@
       };
       decoration = {
         rounding = 10;
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+	shadow = {
+	  enabled = true;
+	  range = 4;
+	  render_power = 3;
+	  color = "rgba(1a1a1aee)";
+	};
       };
       animations = {
         enabled = true;
@@ -66,7 +90,78 @@
     };
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "JetBrainsMono Nerd Font";
+      size = 11;
+    };
+  };
+
+  programs.wofi = {
+    enable = true;
+    settings = {
+      allow_images = true;
+      width = 400;
+      height = 300;
+      always_run = true;
+      show = "drun"; # Mostra apenas aplicativos instalados
+    };
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+
+    style = ''
+      * {
+        font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+        font-size: 13px;
+      }
+      window#waybar {
+        background: rgba(43, 48, 59, 0.5);
+        border-bottom: 2px solid rgba(100, 114, 125, 0.5);
+        color: white;
+      }
+      /* Adiciona espaçamento entre cada módulo individual */
+      #workspaces button,
+      #cpu,
+      #memory,
+      #battery,
+      #pulseaudio,
+      #bluetooth,
+      #clock {
+        padding: 0 10px;
+        margin: 0 4px;
+      }
+    '';
+
+    settings = {
+      mainBar = {
+        layer = "top";
+	position = "top";
+	modules-left = [ "hyprland/workspaces" ];
+	modules-center = [ "hyprland/window" ];
+	modules-right = [ "pulseaudio" "bluetooth" "cpu" "memory" "battery" "clock" ];
+
+	battery = {
+  	 format = "{capacity}% {icon}";
+	 format-icons = ["" "" "" "" ""];
+	};
+
+	pulseaudio = {
+	  format = "{volume}% {icon}";
+	  format-icons = { default = ["" "" ""]; };
+	  on-click = "pavucontrol";
+        };
+
+        bluetooth = {
+          format = " {status}";
+          on-click = "blueman-manager";
+        };
+      };
+    };
+  };
 
   # Opcional: hint para Electron usar Wayland
   home.sessionVariables.NIXOS_OZONE_WL = "1";
