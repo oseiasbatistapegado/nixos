@@ -26,6 +26,16 @@
     enable = true;
     package = null;
     portalPackage = null;
+    extraConfig = ''
+      # Faz com que o Mako ignore o layout de tiling e fique sempre no topo
+      windowrule = float, mako
+      windowrule = noblur, mako
+      windowrule = focusonactivate, mako
+      windowrule = noborder, mako
+
+      # Garante que ele fique acima de tudo (incluindo janelas em fullscreen)
+      layerrule = overlay, mako
+    '';
     systemd.variables = [ "--all" ];
 
     settings = {
