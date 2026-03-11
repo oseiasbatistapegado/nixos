@@ -21,4 +21,16 @@
       serif = [ "JetBrainsMono Nerd Font" ];
     };
   };
+
+  zramSwap = {
+    enable = true;
+    priority = 100;
+    memoryPercent = 400;
+    algorithm = "zstd";
+  };
+
+  swapDevices = [ {
+    device = "/dev/disk/by-label/swap";
+    priority = 1; # Entra em ação só quando a ZRAM lotar
+  }];
 }

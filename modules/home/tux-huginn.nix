@@ -31,6 +31,16 @@
     settings = {
       "$mod" = "SUPER";
       bind = [
+        # Print da tela toda (Full Screen)
+        ", Print, exec, grim - | wl-copy"
+        
+        # Selecionar área e copiar para o clipboard
+        "$mod, Print, exec, grim -g \"$(slurp)\" - | wl-copy"
+        
+        # Selecionar área, editar com Swappy e depois salvar
+        "$mod SHIFT, S, exec, grim -g \"$(slurp)\" - | swappy -f -"
+
+        "$mod, L, exec, hyprlock"
         "$mod, R, exec, wofi --show drun"
         "$mod, F, fullscreen"
         "$mod, Return, exec, kitty"
@@ -240,15 +250,32 @@
     };
   };
 
+  services.mako = {
+    enable = true;
+    
+    settings = {
+      font = "JetBrainsMono Nerd Font 10";
+      background-color = "#1e1e2e";
+      text-color = "#cdd6f4";
+      border-color = "#89b4fa";
+      border-radius = 5;
+      border-size = 2;
+      default-timeout = 5000;
+      layer = "overlay";
+    };
+  };
+
   # Opcional: hint para Electron usar Wayland
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home.packages = with pkgs; [
     unstable.code-cursor
+    wl-clipboard # Para copiar direto para o CTRL+V
     moonlight-qt
-    easyeffects
     otpclient
-    discord
-    firefox
+    swappy  # O "editor" (permite desenhar setas e anotar antes de salvar)
+    brave
+    slurp   # O "selecionador" (permite escolher a área com o mouse)
+    grim    # O "fotógrafo" (captura a tela)
   ];
 }
