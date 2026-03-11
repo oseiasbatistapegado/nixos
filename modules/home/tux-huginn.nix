@@ -26,16 +26,6 @@
     enable = true;
     package = null;
     portalPackage = null;
-    extraConfig = ''
-      # Faz com que o Mako ignore o layout de tiling e fique sempre no topo
-      windowrule = float, mako
-      windowrule = noblur, mako
-      windowrule = focusonactivate, mako
-      windowrule = noborder, mako
-
-      # Garante que ele fique acima de tudo (incluindo janelas em fullscreen)
-      layerrule = overlay, mako
-    '';
     systemd.variables = [ "--all" ];
 
     settings = {
@@ -260,26 +250,12 @@
     };
   };
 
-  services.mako = {
-    enable = true;
-    
-    settings = {
-      font = "JetBrainsMono Nerd Font 10";
-      background-color = "#1e1e2e";
-      text-color = "#cdd6f4";
-      border-color = "#89b4fa";
-      border-radius = 5;
-      border-size = 2;
-      default-timeout = 5000;
-      layer = "overlay";
-    };
-  };
-
   # Opcional: hint para Electron usar Wayland
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home.packages = with pkgs; [
     unstable.code-cursor
+    remote-touchpad
     wl-clipboard # Para copiar direto para o CTRL+V
     moonlight-qt
     otpclient
