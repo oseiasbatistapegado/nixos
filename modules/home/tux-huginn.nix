@@ -31,6 +31,7 @@
     settings = {
       "$mod" = "SUPER";
       bind = [
+        "$mod SHIFT, R, exec, kitty --class floating_remote -e remote-touchpad -bind :38731"
         # Print da tela toda (Full Screen)
         ", Print, exec, grim - | wl-copy"
         

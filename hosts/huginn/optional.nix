@@ -9,6 +9,10 @@
 
   services.openssh.enable = false;
 
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="input", MODE="0660"
+  '';
+
   fonts.packages = with pkgs; [
     font-awesome
     nerd-fonts.jetbrains-mono

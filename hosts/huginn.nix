@@ -16,6 +16,7 @@
     ../modules/common/version.nix
     ./huginn/boot.nix
     ./huginn/dm.nix
+    ./huginn/network.nix
     ./huginn/packages.nix
     ./huginn/systemd.nix
     ./huginn/optional.nix
