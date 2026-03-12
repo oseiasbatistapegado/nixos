@@ -12,5 +12,11 @@
     })
     pavucontrol
     blueman
+    sshfs
+    gcc
+    ripgrep
+    fd
+    gnumake
+    lua-language-server
   ];
 }

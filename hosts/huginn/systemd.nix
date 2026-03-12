@@ -14,7 +14,7 @@
       CPU_BOOST_ON_BAT = 0;
 
       START_CHARGE_THRESH_BAT0 = 30;
-      STOP_CHARGE_THRESH_BAT0 = 40;
+      STOP_CHARGE_THRESH_BAT0 = 37;
     };
   };
 }
