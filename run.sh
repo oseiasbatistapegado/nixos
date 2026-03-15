@@ -14,12 +14,12 @@ REPO_URL="${REPO_URL:-https://github.com/oseiasbatistapegado/nixos.git}"
 
 mount /dev/disk/by-label/nixos /mnt
 mount --mkdir -o umask=077 /dev/disk/by-label/boot /mnt/boot
-swapon /dev/disk/by-label/swap
+mount --mkdir /dev/disk/by-label/home /mnt/home
 
 case "$HOST" in
   FENRIR)
-    mount --mkdir /dev/disk/by-label/home /mnt/home
     mount --mkdir /dev/disk/by-label/games /mnt/media/games
+    swapon /dev/disk/by-label/swap
     HOST_DIR="fenrir"
     ;;
   HUGINN)

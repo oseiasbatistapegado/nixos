@@ -34,9 +34,4 @@
     memoryPercent = 300;
     algorithm = "zstd";
   };
-
-  swapDevices = [ {
-    device = "/dev/disk/by-label/swap";
-    priority = 1; # Entra em ação só quando a ZRAM lotar
-  }];
 }
