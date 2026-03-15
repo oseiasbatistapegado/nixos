@@ -2,7 +2,7 @@
 
 let
   # Importa o arquivo de segredos
-  secrets = import ./secrets.nix;
+  secrets = import ../../hosts/huginn/secrets.nix;
 in
 {
   imports = [
@@ -49,8 +49,8 @@ in
             provider = "gemini",
             providers = {
               gemini = {
-                model = "gemini-1.5-pro-latest",
-                temperature = 0,
+                model = "gemini-flash-lite-latest",
+                temperature = 1,
                 max_tokens = 4096,
               },
             },
@@ -64,6 +64,86 @@ in
             "HakonHarnes/img-clip.nvim",
             "MeanderingProgrammer/render-markdown.nvim",
           },
+        },
+        -- Configuração do LSP
+        {
+          "neovim/nvim-lspconfig",
+          config = function()
+
+            local ok, nv_lsp = pcall(require, "nvchad.configs.lspconfig")
+            local opts = {}
+
+            if ok then
+              opts.on_attach = nv_lsp.on_attach
+              opts.capabilities = nv_lsp.capabilities
+            end
+
+            vim.lsp.config("gopls", {
+              settings = {
+                gopls = {
+                  analyses = { unusedparams = true },
+                  staticcheck = true,
+                },
+              },
+            })
+
+            vim.lsp.config("ts_ls", {})
+
+            vim.lsp.enable({ "gopls", "ts_ls" })
+
+            vim.filetype.add({
+              filename = {
+                ["go.work"] = "gowork",
+              },
+              extension = {
+                tmpl = "gotmpl",
+              },
+            })
+
+          end,
+        },
+        {
+          "tpope/vim-dadbod",
+          lazy = true,
+        },
+        {
+          "hrsh7th/nvim-cmp",
+          opts = function(_, opts)
+            -- Adiciona a fonte do Dadbod à lista de fontes do nvim-cmp
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, { name = "vim-dadbod-completion" })
+          end,
+        },
+
+        {
+          "kristijanhusak/vim-dadbod-ui",
+          dependencies = {
+            { "tpope/vim-dadbod", lazy = true },
+            { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+          },
+          cmd = {
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+          },
+          init = function()
+            vim.g.db_ui_use_nerd_fonts = 1
+            vim.g.db_ui_show_database_icon = 1
+            
+            -- Opcional: Auto-completar automático ao abrir SQL
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = { "sql", "mysql", "plsql" },
+              callback = function()
+                require("cmp").setup.buffer {
+                  sources = {
+                    { name = "vim-dadbod-completion" },
+                    { name = "buffer" },
+                  },
+                }
+              end,
+            })
+          end,
         },
       }
     '';
@@ -298,9 +378,14 @@ in
     enable = true;
     enableFishIntegration = true;
     settings = {
+      command_timeout = 1000;
       add_newline = false;
       # O Starship é sensível à ordem e hierarquia
       format = "$directory$git_branch$git_status$golang$ruby$character"; # Mudamos de $char para $character
+
+      git_status = {
+        disabled = true;
+      };
 
       directory = {
         style = "bold #64e0ff";

@@ -9,6 +9,8 @@
 
   services.openssh.enable = false;
 
+  users.users.tux.shell = pkgs.fish;
+
   services.udev.extraRules = ''
     KERNEL=="uinput", GROUP="input", MODE="0660"
   '';

@@ -12,6 +12,7 @@
     })
     pavucontrol
     blueman
+    fish
     sshfs
     gcc
     ripgrep
@@ -19,4 +20,6 @@
     gnumake
     lua-language-server
   ];
+
+  programs.fish.enable = true;
 }
