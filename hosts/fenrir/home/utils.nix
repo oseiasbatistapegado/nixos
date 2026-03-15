@@ -1,10 +1,5 @@
-{ pkgs, ... }:
-
+{ pkgs, unstable, ... }:
 {
-  home.username = "tux";
-  home.homeDirectory = "/home/tux";
-  home.stateVersion = "25.11";
-
   home.packages = with pkgs; [
     retroarch
     mangohud

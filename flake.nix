@@ -36,12 +36,12 @@
     fenrirModules = [
       ./hosts/fenrir.nix
       home-manager.nixosModules.home-manager
-      (homeManagerModule ./modules/home/tux-fenrir.nix)
+      (homeManagerModule ./hosts/fenrir/home/flake.nix)
     ] ++ (if builtins.pathExists ./hosts/fenrir/hardware-configuration.nix then [ ./hosts/fenrir/hardware-configuration.nix ] else []);
     huginnModules = [
       ./hosts/huginn.nix
       home-manager.nixosModules.home-manager
-      (homeManagerModule ./modules/home/tux-huginn.nix)
+      (homeManagerModule ./hosts/huginn/home/flake.nix)
     ] ++ (if builtins.pathExists ./hosts/huginn/hardware-configuration.nix then [ ./hosts/huginn/hardware-configuration.nix ] else []);
   in
   {

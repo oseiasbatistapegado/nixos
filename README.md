@@ -30,9 +30,9 @@ Testar sem aplicar: use `--dry-run` ou `boot` em vez de `switch`.
   - `optional.nix` — bluetooth, cups, firewall, etc.
   - `hardware-configuration.nix` — **não versionado**; gerado com `nixos-generate-config` na instalação.
 
-- **`modules/common/`** — Módulos usados em todos os hosts (audio, teclado, locale, timezone, users, ssh, network, flake, packages base).
+- **`modules/`** — Módulos usados em todos os hosts (audio, teclado, locale, timezone, users, ssh, network, flake, packages base).
 
-- **`modules/home/`** — Perfis Home Manager por host: `tux-fenrir.nix`, `tux-huginn.nix`, etc.
+- **`hosts/<nome>/home/`** — Perfis Home Manager por host: `fenrir.nix`, `huginn.nix`, etc.
 
 ## Hardware
 
@@ -60,8 +60,8 @@ Antes de rodar, ajuste as montagens no `case` do script (labels/partições) con
 
 1. Criar `hosts/<novo>.nix` com `hostName` e imports (common + `./<novo>/*.nix`).
 2. Criar a pasta `hosts/<novo>/` com `boot.nix`, `dm.nix`, `packages.nix`, `systemd.nix`, `optional.nix` (copiar de um host parecido e adaptar).
-3. Criar `modules/home/tux-<novo>.nix` (perfil do usuário nesse host).
-4. No `flake.nix`: novo `nixosConfigurations.<NOVO>`, lista de módulos (host + home-manager + hardware condicional) e entrada no bloco home-manager para `tux-<novo>.nix`.
+3. Criar `hosts/<nome>/home/flake.nix` (perfil do usuário nesse host).
+4. No `flake.nix`: novo `nixosConfigurations.<NOVO>`, lista de módulos (host + home-manager + hardware condicional) e entrada no bloco home-manager para `flake.nix`.
 5. No `run.sh`: novo `case` com a montagem de discos desse host.
 6. No `.gitignore`: `hosts/<novo>/hardware-configuration.nix`.
 
