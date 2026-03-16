@@ -23,6 +23,7 @@ case "$HOST" in
     HOST_DIR="fenrir"
     ;;
   HUGINN)
+    nix-shell -p cryptsetup --run "cryptsetup open /dev/sdb key_sops && mkdir -p /run/media/tux/key && mount /dev/mapper/key_sops /run/media/tux/key"
     HOST_DIR="huginn"
     ;;
   *)
@@ -48,6 +49,10 @@ git add .
 if ! nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd; then
   echo "Primeira tentativa falhou, tentando novamente..."
   nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd
+fi
+
+if [ "$HOST" = "HUGINN" ]; then
+  nix-shell -p cryptsetup --run "umount /run/media/tux/key && cryptsetup close key_sops"
 fi
 
 nixos-enter --root /mnt -c 'passwd tux'

@@ -5,6 +5,19 @@
     neovim = unstable.neovim-unwrapped;
 
     extraPlugins = ''
+      local function get_secret(path)
+        local file = io.open(path, "r")
+
+        if not file then return nil end
+
+        local content = file:read("*a"):gsub("%s+", "")
+        file:close()
+
+        return content
+      end
+
+      local gemini_key_path = os.getenv("HOME") .. "/.config/gemini_key"
+
       return {
         {
           "yetone/avante.nvim",
@@ -16,6 +29,7 @@
             provider = "gemini",
             providers = {
               gemini = {
+                api_key = get_secret(gemini_key_path) or "KEY NOT FOUND",
                 model = "gemini-flash-lite-latest",
                 temperature = 1,
                 max_tokens = 4096,
