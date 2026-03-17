@@ -1,4 +1,4 @@
-{ pkgs, unstable, nvchad4nix, sops-nix, ... }:
+{ pkgs, unstable, nvchad4nix, sops-nix, config, ... }:
 
 {
   imports = [
