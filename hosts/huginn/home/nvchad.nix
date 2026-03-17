@@ -70,7 +70,7 @@
 
             vim.lsp.config("ts_ls", {})
 
-            vim.lsp.enable({ "gopls", "ts_ls" })
+            vim.lsp.enable({ "gopls", "ts_ls", "zls" })
 
             vim.filetype.add({
               filename = {
