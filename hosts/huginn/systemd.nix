@@ -1,6 +1,8 @@
 { ... }:
 
 {
+  services.earlyoom.enable = true;
+
   # Sem Lact, Sunshine ou monitor virtual no huginn.
   services.tlp = {
     enable = true;
