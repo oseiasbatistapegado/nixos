@@ -48,7 +48,7 @@ git add .
 
 if ! nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd --option extra-substituters "https://nix-community.cachix.org" --option extra-trusted-public-keys "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="; then
   echo "Primeira tentativa falhou, tentando novamente..."
-  nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passw --option extra-substituters "https://nix-community.cachix.org" --option extra-trusted-public-keys "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd --option extra-substituters "https://nix-community.cachix.org" --option extra-trusted-public-keys "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
 fi
 
 if [ "$HOST" = "HUGINN" ]; then

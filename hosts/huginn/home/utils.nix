@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, unstable, agenix, ... }:
 {
   programs.direnv = {
     enable = true;
@@ -66,7 +66,7 @@
     brave
     slurp
     grim
-    sops
     age
+    agenix.packages.${pkgs.system}.default
   ];
 }

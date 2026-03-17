@@ -1,12 +1,12 @@
 {
-  description = "NixOS + Home Manager (multi-host) with SOPS-nix";
+  description = "NixOS + Home Manager (multi-host) with agenix";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    agenix = {
+      url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -21,7 +21,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nvchad4nix, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nvchad4nix, agenix, ... }@inputs:
   let
     system = "x86_64-linux";
     unstable = import nixpkgs-unstable {
@@ -33,7 +33,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = { inherit unstable nvchad4nix sops-nix; };
+        extraSpecialArgs = { inherit unstable nvchad4nix agenix; };
         users.tux = import hostHome;
         backupFileExtension = "backup";
       };
@@ -41,7 +41,6 @@
 
     commonModules = [
       home-manager.nixosModules.home-manager
-      sops-nix.nixosModules.sops
     ];
 
     fenrirModules = commonModules ++ [
