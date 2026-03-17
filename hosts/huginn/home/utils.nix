@@ -56,7 +56,7 @@
   };
 
   home.packages = with pkgs; [
-    unstable.code-cursor
+    # unstable.code-cursor
     wl-clipboard
     moonlight-qt
     cryptsetup
