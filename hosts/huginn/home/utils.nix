@@ -61,7 +61,7 @@
   };
 
   home.packages = with pkgs; [
-    agenix.packages.${pkgs.system}.default
+    agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # unstable.code-cursor
     wl-clipboard
     moonlight-qt
