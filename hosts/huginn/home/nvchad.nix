@@ -133,7 +133,7 @@
       local M = {}
 
       M.base46 = {
-        theme = "chadtain", -- Definimos o tema base aqui
+        theme = "neofusion", -- Definimos o tema base aqui
         transparency = true,
         theme_reload = true,
         changed_themes = {

@@ -23,7 +23,7 @@ case "$HOST" in
     HOST_DIR="fenrir"
     ;;
   HUGINN)
-    nix-shell -p cryptsetup --run "cryptsetup open /dev/sdc key_sops && mkdir -p /run/media/tux/key && mount /dev/mapper/key_sops /run/media/tux/key"
+    # nix-shell -p cryptsetup --run "cryptsetup open /dev/sdc key_sops && mkdir -p /run/media/tux/key && mount /dev/mapper/key_sops /run/media/tux/key"
     HOST_DIR="huginn"
     ;;
   *)
@@ -46,13 +46,13 @@ nixos-generate-config --root /mnt --dir "/mnt/etc/nixos/hosts/$HOST_DIR"
 
 git add .
 
-if ! nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd --option extra-substituters "https://nix-community.cachix.org" --option extra-trusted-public-keys "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="; then
+if ! nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd; then
   echo "Primeira tentativa falhou, tentando novamente..."
-  nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd --option extra-substituters "https://nix-community.cachix.org" --option extra-trusted-public-keys "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  nixos-install --flake "/mnt/etc/nixos#$HOST" --no-root-passwd
 fi
 
-if [ "$HOST" = "HUGINN" ]; then
-  nix-shell -p cryptsetup --run "umount /run/media/tux/key && cryptsetup close key_sops"
-fi
+# if [ "$HOST" = "HUGINN" ]; then
+#   nix-shell -p cryptsetup --run "umount /run/media/tux/key && cryptsetup close key_sops"
+# fi
 
 nixos-enter --root /mnt -c 'passwd tux'

@@ -7,8 +7,15 @@
 
   programs.git = {
     enable = true;
-    userName = "Oséias Batista Pegado";
-    userEmail = "oseias.batista.dev@gmail.com";
+
+    settings = {
+      user = {
+        name = "Oséias Batista Pegado";
+        email = "oseias.batista.dev@gmail.com";
+      };
+      init.defaultBranch = "main";
+    };
+
     includes = [
       {
         condition = "gitdir:~/Documents/mk/";
@@ -23,14 +30,12 @@
         };
       }
     ];
-
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
   };
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
+
     matchBlocks = {
       "github.com-personal" = {
         hostname = "github.com";
@@ -56,6 +61,7 @@
   };
 
   home.packages = with pkgs; [
+    agenix.packages.${pkgs.system}.default
     # unstable.code-cursor
     wl-clipboard
     moonlight-qt
@@ -67,6 +73,5 @@
     slurp
     grim
     age
-    agenix.packages.${pkgs.system}.default
   ];
 }
