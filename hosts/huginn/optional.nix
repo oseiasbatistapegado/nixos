@@ -32,6 +32,6 @@
     enable = true;
     priority = 100;
     memoryPercent = 150;
-    algorithm = "zstd";
+    algorithm = "lz4";
   };
 }
