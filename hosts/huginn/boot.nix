@@ -4,6 +4,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.kernelModules = [ "uinput" ];
+  boot.tmp.useTmpfs = true;
 
   boot.kernel.sysctl = {
     "vm.dirty_bytes" = 50331648;        # 48MB - Força gravar no USB mais cedo em blocos menores

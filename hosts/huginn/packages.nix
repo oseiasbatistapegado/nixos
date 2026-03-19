@@ -19,6 +19,7 @@
     fd
     gnumake
     lua-language-server
+    fw-ectool
   ];
 
   programs.fish.enable = true;

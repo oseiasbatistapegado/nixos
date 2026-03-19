@@ -50,12 +50,12 @@
       "fenrir" = {
         hostname = "192.168.1.102";
         user = "tux";
-        identityFile = "~/.ssh/id_ed25519_personal";
+        identityFile = "~/.ssh/id_ed25519_fenrir";
       };
       "mk-server" = {
         hostname = "192.168.1.246";
         user = "mk";
-        identityFile = "~/.ssh/id_ed25519_personal";
+        identityFile = "~/.ssh/id_ed25519_mk_server";
       };
     };
   };

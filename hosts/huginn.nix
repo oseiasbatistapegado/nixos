@@ -14,6 +14,7 @@
     ../modules/timezone.nix
     ../modules/users.nix
     ../modules/version.nix
+    ./huginn/battery.nix
     ./huginn/boot.nix
     ./huginn/dm.nix
     ./huginn/network.nix

@@ -127,6 +127,7 @@
 
   programs.waybar = {
     enable = true;
+    package = pkgs.waybar;
     systemd.enable = false;
 
     style = ''
@@ -141,8 +142,10 @@
       }
       #workspaces button,
       #cpu,
+      #temperature,
       #memory,
       #disk,
+      #disk.home,
       #battery,
       #pulseaudio,
       #bluetooth,
@@ -150,7 +153,7 @@
         padding: 0 10px;
         margin: 0 4px;
       }
-      #workspaces button.active {
+      #workspaces button.active, #workspaces button.focused, #workspaces button.visible {
         background-color: rgba(51, 204, 255, 0.66); 
         border-radius: 5px;
         color: #ffffff;
@@ -163,10 +166,11 @@
 	      position = "top";
 	      modules-left = [ "hyprland/workspaces" ];
 	      modules-center = [ "hyprland/window" ];
-	      modules-right = [ "pulseaudio" "bluetooth" "cpu" "memory" "disk" "battery" "clock" ];
+	      modules-right = [ "pulseaudio" "bluetooth" "cpu" "temperature" "memory" "disk" "disk#home" "battery" "clock" ];
 
         "hyprland/workspaces" = {
           format = "{icon}";
+          all-outputs = true;
           format-icons = {
             "1" = "";
             "2" = "";
@@ -181,14 +185,22 @@
           };
           on-click = "activate";
           persistent-workspaces = {
-            "DP-1" = [ 1 2 3 4 5 6 7 8 9 10 ];
+            "*" = [ 1 2 3 4 5 6 7 8 9 10 ];
           };
         };
 
         cpu = {
-          format = "{usage}% ";
+          format = "{usage}% @ {avg_frequency}GHz ";
+          interval = 5;
         };
 
+        temperature = {
+          # Forçando o caminho que reportou ~53°C
+          hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+          critical-threshold = 80;
+          format-critical = "{temperatureC}°C ";
+          format = "{temperatureC}°C ";
+        };
         memory = {
           format = "{percentage}% ";
         };
@@ -197,6 +209,12 @@
           interval = 30;
           format = "{percentage_used}% ";
           path = "/";
+        };
+
+        "disk#home" = {
+          interval = 30;
+          format = "{percentage_used}% "; # Ícone de casa (home) para diferenciar
+          path = "/home";
         };
 
 	      battery = {
