@@ -60,6 +60,39 @@
     };
   };
 
+  home.file.".local/share/posting/themes/rapture.yaml".text = ''
+    name: rapture
+    author: Oséias
+    
+    # Base do Sistema (Identidade Visual do seu Foot)
+    background: '#111e2a'
+    foreground: '#c0c9e5'
+    
+    # UI Elements: Trocando o rosa pelo azul/ciano para parecer o NvChad
+    primary: '#6c9bf5'     # regular4 (azul dominante nos widgets)
+    secondary: '#7afde1'   # regular2 (ciano para foco e seleções)
+    accent: '#64e0ff'      # regular6 (azul claro em vez de rosa para o cursor/foco)
+    surface: '#304b66'     # bright0 (painéis e separadores)
+    
+    # Feedback Visual
+    success: '#7afde1'     # regular2 (ciano)
+    warning: '#fff09b'     # regular3 (amarelo)
+    error: '#fc644d'       # regular1 (o rosa/vermelho fica restrito a erros)
+    
+    # Métodos HTTP: Cores sólidas da sua paleta
+    method:
+      get: '#7afde1'       # ciano
+      post: '#6c9bf5'      # azul
+      put: '#fff09b'       # amarelo
+      delete: '#fc644d'    # vermelho/rosa
+  '';
+
+  home.file.".config/posting/config.yaml".text = ''
+    theme: rapture
+    # Como você usa alpha no foot, talvez queira que o Posting seja transparente?
+    # Se sim, o terminal precisa suportar e o background aqui deve ser omitido ou "transparent"
+  '';
+
   home.packages = with pkgs; [
     agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     # unstable.code-cursor
@@ -68,6 +101,7 @@
     cryptsetup
     fastfetch
     otpclient
+    lazygit
     swappy
     brave
     slurp

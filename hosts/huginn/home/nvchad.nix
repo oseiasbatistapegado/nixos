@@ -126,6 +126,25 @@
             })
           end,
         },
+        {
+          "kdheepak/lazygit.nvim",
+          cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile" },
+          dependencies = { "nvim-lua/plenary.nvim" },
+        },
+        {
+          "mistweaverco/kulala.nvim",
+          keys = {
+            { "<leader>Rs", desc = "Send request" },
+            { "<leader>Ra", desc = "Send all requests" },
+            { "<leader>Rb", desc = "Open scratchpad" },
+          },
+          ft = {"http", "rest"},
+          opts = {
+            global_keymaps = true,
+            global_keymaps_prefix = "<leader>R",
+            kulala_keymaps_prefix = "",
+          },
+        },
       }
     '';
  
@@ -169,6 +188,12 @@
         theme = "chadtain",
         transparency = true,
       }
+
+      -- Mapeamentos usando a API recomendada pela doc que você mandou
+      local map = vim.keymap.set
+
+      -- Atalho para o LazyGit
+      map("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Git: Abrir LazyGit" })
 
       return M
     '';

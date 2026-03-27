@@ -15,6 +15,7 @@
     fish
     sshfs
     gcc
+    waypipe
     ripgrep
     fd
     gnumake
