@@ -70,7 +70,12 @@
 
             vim.lsp.config("ts_ls", {})
 
-            vim.lsp.enable({ "gopls", "ts_ls", "zls" })
+            vim.lsp.config("jdtls", {
+              cmd = { "jdtls" },
+              root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+            })
+
+            vim.lsp.enable({ "gopls", "ts_ls", "zls", "jdtls" })
 
             vim.filetype.add({
               filename = {

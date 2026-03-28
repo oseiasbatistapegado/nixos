@@ -16,4 +16,6 @@ in
   "ssh_private_mk_server.age".publicKeys = defaultPubKeys;
   "ssh_public_mk_server.age".publicKeys = defaultPubKeys;
   "otp_aegis.age".publicKeys = defaultPubKeys;
+  "k3s_token.age".publicKeys = defaultPubKeys;
+  "tailscale_key.age".publicKeys = defaultPubKeys;
 }

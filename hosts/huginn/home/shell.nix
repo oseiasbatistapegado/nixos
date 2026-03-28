@@ -2,6 +2,11 @@
 {
   programs.fish = {
     enable = true;
+    shellInit = ''
+      set -gx EDITOR nvim
+      set -gx KUBECONFIG /home/tux/.kube/config
+      set -gx NIXOS_OZONE_WL 1
+    '';
     interactiveShellInit = ''
       set fish_greeting # Remove a mensagem de boas-vindas
       fish_vi_key_bindings # Habilita os atalhos do Vim (ESC para entrar em modo normal)

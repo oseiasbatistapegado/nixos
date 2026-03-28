@@ -3,6 +3,15 @@
 {
   networking.hostName = "huginn";
 
+  age = {
+    identityPaths = [ "/run/media/tux/key/key.txt" ];
+    secrets.k3s_token.file = ./huginn/home/ages/k3s_token.age;
+    secrets.tailscale_key.file = ./huginn/home/ages/tailscale_key.age;
+  };
+  environment.shellAliases = {
+    sudo = "doas";
+  };
+
   # hardware-configuration.nix é adicionado pelo flake quando o arquivo existe (gerado com nixos-generate-config --dir hosts/huginn)
   imports = [
     ../modules/audio.nix

@@ -41,6 +41,7 @@
 
     commonModules = [
       home-manager.nixosModules.home-manager
+      agenix.nixosModules.default
     ];
 
     fenrirModules = commonModules ++ [
@@ -63,7 +64,7 @@
 
     nixosConfigurations.HUGINN = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs unstable; };
+      specialArgs = { inherit inputs unstable agenix; };
       modules = huginnModules;
     };
   };

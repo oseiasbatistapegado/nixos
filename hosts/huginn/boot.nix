@@ -3,10 +3,13 @@
 {
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
-  boot.kernelModules = [ "uinput" ];
+  boot.kernelModules = [ "uinput" "br_netfilter" "ip_conntrack" "ip_vs" "ip_vs_rr" "ip_vs_wrr" "ip_vs_sh" ];
   boot.tmp.useTmpfs = true;
 
-boot.kernel.sysctl = {
+  boot.kernel.sysctl = {
+    "net.bridge.bridge-nf-call-iptables" = 1;
+    "net.ipv4.ip_forward" = 1;
+
     # Foco em manter o sistema responsivo durante escritas em disco
     "vm.dirty_bytes" = 50331648;          # 48MB
     "vm.dirty_background_bytes" = 25165824; # 24MB
