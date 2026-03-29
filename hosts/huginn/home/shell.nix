@@ -4,7 +4,6 @@
     enable = true;
     shellInit = ''
       set -gx EDITOR nvim
-      set -gx KUBECONFIG /home/tux/.kube/config
       set -gx NIXOS_OZONE_WL 1
     '';
     interactiveShellInit = ''

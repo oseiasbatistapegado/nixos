@@ -65,7 +65,6 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    KUBECONFIG = "/home/tux/.kube/config";
     EDITOR = "nvim";
   };
 }

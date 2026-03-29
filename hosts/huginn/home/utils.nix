@@ -16,20 +16,20 @@
       init.defaultBranch = "main";
     };
 
-    includes = [
-      {
-        condition = "gitdir:~/Documents/mk/";
-        contents = {
-          user = {
-            name = "OseiasMK";
-            email = "oseias.batista@mksolutions.com.br";
-          };
-          core = {
-            sshCommand = "ssh -i ~/.ssh/id_ed25519_mk";
-          };
-        };
-      }
-    ];
+    # includes = [
+    #   {
+    #     condition = "gitdir:~/Documents/mk/";
+    #     contents = {
+    #       user = {
+    #         name = "OseiasMK";
+    #         email = "oseias.batista@mksolutions.com.br";
+    #       };
+    #       core = {
+    #         sshCommand = "ssh -i ~/.ssh/id_ed25519_mk";
+    #       };
+    #     };
+    #   }
+    # ];
   };
 
   programs.ssh = {
@@ -42,18 +42,23 @@
         user = "git";
         identityFile = "~/.ssh/id_ed25519_personal";
       };
+      "codeberg.org" = {
+        hostname = "codeberg.org";
+        user = "git";
+        identityFile = "~/.ssh/id_ed25519_personal";
+      };
       "github.com-mk" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519_mk";
       };
       "fenrir" = {
-        hostname = "192.168.1.102";
+        hostname = "fenrir.local";
         user = "tux";
         identityFile = "~/.ssh/id_ed25519_fenrir";
       };
       "mk-server" = {
-        hostname = "192.168.1.246";
+        hostname = "mk_server.local";
         user = "mk";
         identityFile = "~/.ssh/id_ed25519_mk_server";
       };

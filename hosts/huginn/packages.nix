@@ -21,6 +21,7 @@
     gnumake
     lua-language-server
     fw-ectool
+    roc-toolkit
   ];
 
   programs.fish.enable = true;
