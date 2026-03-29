@@ -9,7 +9,7 @@
     settings = {
       "$mod" = "SUPER";
       bind = [
-        "$mod SHIFT, R, exec, foot --app-id=floating_remote remote-touchpad -bind :38731"
+        "$mod SHIFT, R, exec, foot --app-id=floating_remote remote-touchpad -bind huginn.local:38731"
         # Print da tela toda (Full Screen)
         ", Print, exec, grim - | wl-copy"
         

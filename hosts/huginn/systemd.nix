@@ -52,7 +52,6 @@
   services.resolved.enable = false;
   services.adguardhome = {
     enable = true;
-    mutableSettings = false;
     openFirewall = true;
     settings = {
       http = {
@@ -62,11 +61,6 @@
         bind_hosts = ["0.0.0.0"];
         port = 53;
 
-        bootstrap_dns = [
-          "1.1.1.1"
-          "8.8.8.8"
-        ];
-
         upstream_dns = [
           "1.1.1.1"
           "8.8.8.8"
@@ -75,21 +69,6 @@
       };
       filtering = {
         filtering_enabled = true;
-        interval = 24;
-        filters = [
-          {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt";
-            name = "AdGuard DNS filter";
-            id = 1;
-          }
-          {
-            enabled = true;
-            url = "https://adguardteam.github.io/HostlistsRegistry/assets/filter_2.txt";
-            name = "Steven Black's List";
-            id = 2;
-          }
-        ];
         rewrites = [
           { domain = "huginn.local"; answer = "192.168.1.103"; enabled = true; }
           { domain = "fenrir.local"; answer = "192.168.1.102"; enabled = true; }
