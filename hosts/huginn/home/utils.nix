@@ -53,12 +53,12 @@
         identityFile = "~/.ssh/id_ed25519_mk";
       };
       "fenrir" = {
-        hostname = "fenrir.local";
+        hostname = "fenrir.lan";
         user = "tux";
         identityFile = "~/.ssh/id_ed25519_fenrir";
       };
       "mk-server" = {
-        hostname = "mk_server.local";
+        hostname = "mk_server.lan";
         user = "mk";
         identityFile = "~/.ssh/id_ed25519_mk_server";
       };

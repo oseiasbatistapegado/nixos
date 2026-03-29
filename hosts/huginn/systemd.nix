@@ -70,13 +70,13 @@
       filtering = {
         filtering_enabled = true;
         rewrites = [
-          { domain = "huginn.local"; answer = "192.168.1.103"; enabled = true; }
-          { domain = "fenrir.local"; answer = "192.168.1.102"; enabled = true; }
-          { domain = "mk_server.local"; answer = "192.168.1.246"; enabled = true; }
-          { domain = "router.local"; answer = "192.168.1.1"; enabled = true; }
-          { domain = "ze.local"; answer = "192.168.1.154"; enabled = true; }
-          { domain = "mobile.local"; answer = "192.168.1.201"; enabled = true; }
-          { domain = "mi.local"; answer = "192.168.1.128"; enabled = true; }
+          { domain = "huginn.lan"; answer = "192.168.1.103"; enabled = true; }
+          { domain = "fenrir.lan"; answer = "192.168.1.102"; enabled = true; }
+          { domain = "mk_server.lan"; answer = "192.168.1.246"; enabled = true; }
+          { domain = "router.lan"; answer = "192.168.1.1"; enabled = true; }
+          { domain = "ze.lan"; answer = "192.168.1.154"; enabled = true; }
+          { domain = "mobile.lan"; answer = "192.168.1.201"; enabled = true; }
+          { domain = "mi.lan"; answer = "192.168.1.128"; enabled = true; }
         ];
       };
     };
