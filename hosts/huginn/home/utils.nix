@@ -106,8 +106,10 @@
     cryptsetup
     fastfetch
     otpclient
+    discord
     lazygit
     swappy
+    chafa
     brave
     slurp
     grim

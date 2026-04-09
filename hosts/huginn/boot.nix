@@ -18,7 +18,7 @@
     "vm.vfs_cache_pressure" = 200;
     
     # Swappiness alto para usar o LZO-RLE o quanto antes
-    "vm.swappiness" = 180;
+    "vm.swappiness" = 200;
     
     # Otimização para zRAM: processar uma página por vez evita picos de latência
     "vm.page-cluster" = 0;

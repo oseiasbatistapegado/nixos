@@ -76,7 +76,7 @@
           { domain = "router.lan"; answer = "192.168.1.1"; enabled = true; }
           { domain = "ze.lan"; answer = "192.168.1.154"; enabled = true; }
           { domain = "mobile.lan"; answer = "192.168.1.201"; enabled = true; }
-          { domain = "mi.lan"; answer = "192.168.1.128"; enabled = true; }
+          { domain = "mi.lan"; answer = "192.168.1.165"; enabled = true; }
         ];
       };
     };
