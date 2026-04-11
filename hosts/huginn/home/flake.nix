@@ -60,6 +60,10 @@
         file = ./ages/otp_aegis.age;
         path = "${config.home.homeDirectory}/Documents/aegis_dump.json";
       };
+      allowed_signers = {
+        file = ./ages/allowed_signers.age;
+        path = "${config.home.homeDirectory}/.config/git/allowed_signers";
+      };
     };
   };
 

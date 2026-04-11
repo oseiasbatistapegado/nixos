@@ -18,4 +18,5 @@ in
   "otp_aegis.age".publicKeys = defaultPubKeys;
   "k3s_token.age".publicKeys = defaultPubKeys;
   "tailscale_key.age".publicKeys = defaultPubKeys;
+  "allowed_signers.age".publicKeys = defaultPubKeys;
 }

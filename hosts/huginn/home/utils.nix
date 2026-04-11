@@ -16,6 +16,7 @@
       };
       init.defaultBranch = "main";
       gpg.format = "ssh";
+      "gpg \"ssh\"".allowedSignersFile = "~/.config/git/allowed_signers";
       commit.gpgsign = true;
       tag.gpgsign = true;
     };
