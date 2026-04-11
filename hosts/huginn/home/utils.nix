@@ -12,8 +12,12 @@
       user = {
         name = "Oséias Batista Pegado";
         email = "oseias.batista.dev@gmail.com";
+        signingkey = "~/.ssh/id_ed25519_personal.pub";
       };
       init.defaultBranch = "main";
+      gpg.format = "ssh";
+      commit.gpgsign = true;
+      tag.gpgsign = true;
     };
 
     # includes = [
